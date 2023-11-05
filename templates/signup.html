@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+{% block body%}
+<div class="container mt-5">
+  <div class="container m-auto border p-4 col-8">
+    <div class="card-body p-5">
+      <div class="text-center col">
+        <img src="/static/img/logo1.webp" alt="" style="height: 150px;">
+
+        <!-- <hr> -->
+        <div class="display-8">Create an account</div>
+        <hr>
+      </div>
+      <form action="/signup" method="POST">
+        {%csrf_token%}
+        {%if error%}
+        <div class="alert " style="background-color: rgb(213, 164, 164);"><b>{{error}}</b></div>
+        {%endif%}
+        
+        <!-- firstname -->
+        <div class="form-group">
+          <label for="">Enter your First Name</label>
+          <input type="text" name="first_name" class="form-control" id="firstname" value="{{values.first_name}}"
+            placeholder="First name">
+        </div>
+
+        <!-- last name -->
+        <div class="form-group">
+          <label for="name">Enter your last Name</label>
+          <input type="text" name="last_name" class="form-control" id="lastname" value="{{values.last_name}}"
+            placeholder="Last name">
+        </div>
+
+        <!-- phone -->
+        <div class="form-group">
+          <label for="Password1">phone</label>
+          <input type="password" name="phone" class="form-control" id="phone" value="{{values.phone}}"
+            placeholder="Enter your phone Number">
+        </div>
+
+        <!-- email -->
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" name="email" class="form-control" id="email" value="{{values.email}}"
+            placeholder="email@example.com">
+        </div>
+
+        <!--password-->
+        <div class="form-group">
+          <label for="Password">Password</label>
+          <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-block"> Register</button>
+        <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/login"
+            class="fw-bold text-body"><u>Login here</u></a></p>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+{% endblock body%}

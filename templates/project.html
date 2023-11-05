@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{% block head %}
+{% endblock head %}
+{% block body%}
+
+<!-- Gallery -->
+<style>
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
+
+<div class="container mt-5">
+  {{categories}}
+
+  {% for project in projects %}
+    {% if forloop.counter0|divisibleby:3 %}
+      <div class="row">
+    {% endif %}
+    <div class="col-lg-4 col-md-12 mb-4 mb-lg-0 image-container">
+      <img src="{{ project.project_image.url }}" class="w-100 shadow-1-strong rounded mb-4" alt="Project Image" />
+    </div>
+    {% if forloop.counter|divisibleby:3 or forloop.last %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+<!-- Gallery -->
+
+{%endblock body%}
+
+

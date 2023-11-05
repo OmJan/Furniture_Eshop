@@ -1,0 +1,79 @@
+{%extends "index.html"%}
+{%load static%}
+
+{% block head %}
+<style>
+    .container-fluid{
+        padding: 0px 200px;
+    }
+
+</style>
+{% endblock head %}
+{% block body%}
+{% load cart %}
+{% load custom_filter %}
+
+<div class="container-fluid mt-0">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for slider in sliders %}
+            <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %} class="active"> {% endif %}</li>
+            {% endfor%}
+        </ol>
+        <div class="carousel-inner">
+            {% for slider in sliders %}
+            <div class="carousel-item {% if forloop.first %} active {% endif%}">
+                <img src="{{slider.image.url}}" class="d-block w-100" alt="...">
+            </div>
+            {% endfor %}
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"><span
+                class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"><span
+                class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+    </div>
+</div>
+<!--all product-->
+<div class="col-lg-9 mx-auto mt-5">
+    <div class="row mx-auto">
+        {% for product in products %}
+        <div class="card mx-auto mb-3" id={{product.id}} style="width: 18rem;">
+            <img src="{{product.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-titlen text-center">{{product.name}}</h5>
+                <p class="card-text text-center"> {{product.price|currency}}</p>
+                <p class="card-text text-center"> {{product.description}}</p>
+                <!--<a href="#" class="btn btn-light mx-4 d-block">Add to Wishlist</a>-->
+            </div>
+            <div class="card-footer p-0">
+                {%if product|is_in_cart:request.session.cart%}
+                <div class="row no-gutters">
+                    <form action="/#{{product.id}}" method="POST" class="col-2">
+                        {% csrf_token %}
+                        <input hidden type="text" name="product" value="{{product.id}}">
+                        <input hidden type="text" name="remove" value="True">
+                        <input type="submit" value=" - " class="btn  btn-light btn-block ">
+                    </form>
+                    <div class="text-center col"> {{product|cart_quantity:request.session.cart}} </div>
+                    <form action="/#{{product.id}}" method="POST" class="col-2">
+                        {% csrf_token %}
+                        <input hidden type="text" name="product" value="{{product.id}}">
+                        <input type="submit" value=" + " class="btn  btn-light btn-block ">
+                    </form>
+                </div>
+                {% else %}
+                <form action="/#{{product.id}}" method="POST">
+                    {% csrf_token %}
+                    <input hidden type="text" name="product" value="{{product.id}}">
+                    <input type="submit" class="btn btn-light form-control" value="Add to Cart"></input>
+                </form>
+                {%endif%}
+
+            </div>
+        </div>
+
+        {%endfor%}
+    </div>
+</div>
+
+{% endblock body%}

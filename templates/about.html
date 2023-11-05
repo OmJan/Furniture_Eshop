@@ -1,0 +1,65 @@
+{% extends "index.html" %}
+
+{% block head %}
+<style>
+
+    .container {
+    
+        background-color: rgb(235, 181, 110);
+        width: 100%;
+    }
+
+    .row {
+        margin: 0;
+    }
+
+    .About_us {
+        padding: 10% 5%;
+    }
+
+    .image {
+        height: 50vhvh;
+    }
+
+    .img-fluid {
+        height: 70vh;
+        width: 80vw;
+    }
+</style>
+{% endblock head %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <!-- Image Column -->
+        <div class="image col-md-6">
+            <img src="static/img/About1.webp" class="img-fluid" alt="Image Description">
+        </div>
+
+        <!-- About Us Column -->
+        <div class="About_us col-md-6">
+            <h2 class="text-center"> About Us </h2>
+
+            <p>
+                <strong>Committed to Excellence</strong><br>
+                Managing and overseeing projects can be a challenging task, but at <em>Shanti Furniture</em>, we're here
+                to help.
+            </p>
+
+            <p>
+                <strong>Our Dedicated Team</strong><br>
+                Our team is made up of skilled professionals who excel in managing a wide range of projects, from
+                complex undertakings to simpler tasks. Fueled by our unwavering commitment to excellence, we always go
+                the extra mile to ensure our clients are completely satisfied with our work.
+            </p>
+
+            <p>
+                <strong>Your Trusted Partner</strong><br>
+                At <em>Shanti Furniture</em>, we recognize that every project is unique, and your needs are our top
+                priority. We are dedicated to providing exceptional quality and service, ensuring that your vision
+                becomes a reality.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,12 @@
+#header{
+    background-color: rgb(59, 11, 62);
+}
+
+.module a{
+    font-size: 18px;
+}
+
+.login-form input[type="submit"] {
+    background-color: #0077b6; /* Change to your desired button color */
+    color: #fff; /* Change to your desired text color */
+}
