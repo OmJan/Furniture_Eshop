@@ -1,23 +1,56 @@
 {% extends "index.html" %}
-{% block body%}
+{% block body %}
 <style>
-    .card-body {
-        overflow: hidden;
-        font-family: 'Ubuntu', sans-serif;
+    .container_services {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 5% 20% 10% 20%;
+
     }
 
-  
+    .col {
+        flex: 0 0 calc(50% - 10px);
+        box-sizing: border-box;
+        margin: 10px 5px;
+    }
+
+
+    .card {
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (max-width: 800px) {
+        .col {
+            flex: 0 0 calc(100% - 20px);
+        }
+
+        .container_services {
+            margin: 10px 10px;
+            width: 100%;
+        }
+
+    }
+
+    .card-body {
+        background-color: rgb(186, 186, 186);
+        padding: 10%;
+        margin: 2px;
+
+    }
+
+    .card-title {
+        font-size: larger;
+    }
 </style>
+
 <!-- Services -->
-<div class="container mt-4 p-4">
-    <div class="row m-auto">
+<div class="container_services">
+    <div class="row">
         {% for service_data in services %}
-        <div class="col-md-5 ml-5">
-            <div class="card m-auto" style="background-color: antiquewhite;" >
-                {% if service_data.service.image %}
-                <img src="{{service_data.service.image.url}}" class="cart-img rounded mb-4" alt="Service Image 2">
-                {% endif %}
-                <div class="card-body p-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
                     <h1 class="card-title text-center"><b>{{ service_data.service }}</b></h1>
                 </div>
             </div>
@@ -26,4 +59,4 @@
     </div>
 </div>
 <!-- Services -->
-{%endblock body%}
+{% endblock body %}

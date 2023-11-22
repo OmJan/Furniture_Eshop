@@ -4,6 +4,12 @@
     body {
         height: 100%;
     }
+
+    .container_profile {
+    min-height: calc(100vh - 100px); 
+    display: flex;
+    flex-direction: column;
+}
 </style>
 
 { %endblock head% }
@@ -11,7 +17,7 @@
 {% block body%}
 
 <body>
-    <div class="container mt-5">
+    <div class="container_profile mt-5">
         <h2>User Profile</h2>
         <p>First Name: {{ request.first_name }}</p>
         <p>Last Name: {{ customers.last_name }}</p>

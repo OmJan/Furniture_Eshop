@@ -15,13 +15,13 @@
     <style>
         * {
             margin: 0px;
-            
             font-family: 'AR One Sans', sans-serif;
             font-family: 'Ubuntu', sans-serif;
         }
 
         nav {
             background-color: rgb(202, 201, 201);
+            height: 100px;
         }
 
         .one-edge-shadow {
@@ -37,17 +37,22 @@
             position: relative;
             bottom: 0;
             width: 100%;
+            padding-top : 100px;
+            padding-bottom:100px ;
             background-color: rgb(246, 245, 245);
             /*text-align: center;*/
-            padding: 20px;
+           
         }
 
         .navbar-nav .nav-item.active,
         .navbar-nav .nav-item:hover {
             border-radius: 5px;
-            background-color: rgb(162, 172, 175) 
-            
+            background-color: rgb(162, 172, 175)
         }
+
+     
+
+      
     </style>
 </head>
 {% block head %}
@@ -92,8 +97,6 @@
             {% else %}
             <li class="nav-item "><a class="nav-link" aria-current="page" href="/signup">Signup</a></li>
             <li class="nav-item "><a class="nav-link" aria-current="page" href="/login">Login</a></li>
-
-
             {% endif %}
         </ul>
     </div>
